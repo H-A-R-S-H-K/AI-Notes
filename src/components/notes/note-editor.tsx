@@ -41,7 +41,7 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
 
     try {
       if (noteId === 'new' || !existingNote) {
-        await createNote.mutateAsync({ title, content });
+        await createNote.mutateAsync({ title, content, summary });
         toast('Success!', {
           description: 'Your note has been created.',
         });
@@ -141,7 +141,7 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
           )}
         </Tabs>
         
-        {content && content.length > 100 && !summary && (
+        {content && content.length > 0 && !summary && (
           <div className="pt-4">
             <SummarizeButton 
               content={content} 

@@ -21,10 +21,10 @@ export function useNotes() {
   });
 
   const createNote = useMutation({
-    mutationFn: async ({ title, content }: { title: string, content: string }) => {
+    mutationFn: async ({ title, content, summary }: { title: string, content: string, summary: string }) => {
       const { data, error } = await supabase
         .from('notes')
-        .insert([{ title, content, user_id: (await supabase.auth.getUser()).data.user?.id }])
+        .insert([{ title, content, summary, user_id: (await supabase.auth.getUser()).data.user?.id }])
         .select()
         .single();
 
