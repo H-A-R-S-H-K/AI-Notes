@@ -74,7 +74,7 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-screen p-5">
       <div className="flex justify-between items-center">
         <Button
           variant="ghost"

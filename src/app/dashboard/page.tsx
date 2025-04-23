@@ -17,7 +17,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="container py-8">
+    <div className="py-8">
       <NoteList />
     </div>
   );

@@ -9,7 +9,7 @@ interface AuthFormProps {
 
 export function AuthForm({ defaultTab = 'login' }: AuthFormProps) {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-[320px]">
       <CardHeader>
         <CardTitle>AI-Powered Notes</CardTitle>
         <CardDescription>
