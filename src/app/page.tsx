@@ -15,7 +15,7 @@ export default async function HomePage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
@@ -38,7 +38,7 @@ export default async function HomePage() {
         </section>
         
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="rounded-full p-2 bg-muted">
