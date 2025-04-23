@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'openai/gpt-4o',
+        model: 'deepseek/deepseek-chat:free',
         messages: [
           {
             role: 'system',
