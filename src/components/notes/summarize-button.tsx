@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { fetchWithTimeout } from '@/lib/utils/helpers';
 import { Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
-
+1
 interface SummarizeButtonProps {
   content: string;
   onSummarizeSuccess: (summary: string) => void;
@@ -15,11 +15,10 @@ export function SummarizeButton({ content, onSummarizeSuccess }: SummarizeButton
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSummarize = async () => {
-    if (!content || content.trim().length < 100) {
+    if (!content || content.trim().length == 0) {
       toast('Not enough content', {
-        description: 'Please add more content to your note to generate a summary.',
-        // variant: 'destructive',
-      });
+        description: 'Please add more content to your note to generate a summary.'
+      })
       return;
     }
 
@@ -41,6 +40,7 @@ export function SummarizeButton({ content, onSummarizeSuccess }: SummarizeButton
 
       const data = await response.json();
       onSummarizeSuccess(data.summary);
+      console.log(data.summary);
       
       toast('Summary Generated', {
         description: 'Your note has been summarized successfully.',
@@ -59,7 +59,7 @@ export function SummarizeButton({ content, onSummarizeSuccess }: SummarizeButton
   return (
     <Button
       onClick={handleSummarize}
-      disabled={isLoading || content.trim().length < 100}
+      disabled={isLoading || content.trim().length == 0}
       variant="secondary"
       className="flex items-center gap-2"
     >

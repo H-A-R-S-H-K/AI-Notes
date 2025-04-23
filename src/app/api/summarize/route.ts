@@ -16,26 +16,26 @@ export async function POST(request: NextRequest) {
 
     // Parse request body
     const { content } = await request.json();
-    
-    if (!content || typeof content !== 'string' || content.length < 100) {
+
+    if (!content || typeof content !== 'string' || content.length == 100) {
       return NextResponse.json(
         { error: 'Content must be a string with at least 100 characters' },
         { status: 400 }
       );
-    }
+    }   
 
     // Call the AI API for summarization (using DeepSeek API as an example)
     // Replace API_KEY with actual environment variable in production
     const apiKey = process.env.DEEPSEEK_API_KEY || '';
     
-    const summaryResponse = await fetch('https://api.deepseek.com/v1/completions', {
+    const summaryResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'deepseek-chat',
+        model: 'openai/gpt-4o',
         messages: [
           {
             role: 'system',
@@ -49,6 +49,7 @@ export async function POST(request: NextRequest) {
         max_tokens: 500,
       }),
     });
+
 
     if (!summaryResponse.ok) {
       // Fallback to basic summarization if API fails
