@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useNotes } from '@/lib/hooks/use-notes';
-import { Note } from '@/lib/utils/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -54,9 +53,9 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
       router.push('/dashboard');
     } catch (error) {
       toast('Error', {
-        description: 'Failed to save note. Please try again.',
-        // variant: 'destructive',
+        description: 'Failed to save note. Please try again.'
       });
+      console.error(error)
     } finally {
       setIsSubmitting(false);
     }

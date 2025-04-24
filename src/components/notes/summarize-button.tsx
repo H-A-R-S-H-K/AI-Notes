@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { fetchWithTimeout } from '@/lib/utils/helpers';
 import { Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
-1
+
 interface SummarizeButtonProps {
   content: string;
   onSummarizeSuccess: (summary: string) => void;

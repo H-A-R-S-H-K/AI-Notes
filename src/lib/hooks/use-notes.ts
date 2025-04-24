@@ -4,6 +4,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../supabase/client';
 import { Note } from '../utils/types';
 
+interface UpdateData {
+    title?: string;
+    content?: string;
+    summary?: string;
+  }
+
 export function useNotes() {
   const queryClient = useQueryClient();
 
@@ -38,7 +44,7 @@ export function useNotes() {
 
   const updateNote = useMutation({
     mutationFn: async ({ id, title, content, summary }: { id: string, title?: string, content?: string, summary?: string }) => {
-      const updateData: any = {};
+      const updateData: UpdateData = {};
       if (title !== undefined) updateData.title = title;
       if (content !== undefined) updateData.content = content;
       if (summary !== undefined) updateData.summary = summary;

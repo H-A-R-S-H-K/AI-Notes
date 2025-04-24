@@ -44,8 +44,12 @@ export function useAuth() {
       });
       if (error) throw error;
       return { success: true };
-    } catch (error: any) {
-      return { success: false, error: error.message };
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return { success: false, error: error.message };
+        } else {
+            return { success: false, error: "An unknown error occurred" };
+        }
     }
   };
 
@@ -57,8 +61,12 @@ export function useAuth() {
       });
       if (error) throw error;
       return { success: true };
-    } catch (error: any) {
-      return { success: false, error: error.message };
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return { success: false, error: error.message };
+        } else {
+            return { success: false, error: "An unknown error occurred" };
+        }
     }
   };
 
@@ -72,8 +80,12 @@ export function useAuth() {
       });
       if (error) throw error;
       return { success: true };
-    } catch (error: any) {
-      return { success: false, error: error.message };
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return { success: false, error: error.message };
+        } else {
+            return { success: false, error: "An unknown error occurred" };
+        }
     }
   };
 
@@ -82,8 +94,12 @@ export function useAuth() {
       await supabase.auth.signOut();
       router.push('/');
       return { success: true };
-    } catch (error: any) {
-      return { success: false, error: error.message };
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return { success: false, error: error.message };
+        } else {
+            return { success: false, error: "An unknown error occurred" };
+        }
     }
   };
 

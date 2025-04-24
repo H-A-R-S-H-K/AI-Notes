@@ -1,6 +1,5 @@
 import { AuthForm } from '@/components/auth/auth-form';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 

@@ -49,8 +49,12 @@ export function UserAuthForm({ type }: UserAuthFormProps) {
         });
         router.push('/auth/login');
       }
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            setError(error.message);
+        } else {
+            setError("An unknown error occurred");
+        }
     } finally {
       setIsLoading(false);
     }
@@ -62,8 +66,12 @@ export function UserAuthForm({ type }: UserAuthFormProps) {
     
     try {
       await signInWithGoogle();
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            setError(error.message);
+        } else {
+            setError("An unknown error occurred");
+        }
     } finally {
       setIsLoading(false);
     }
