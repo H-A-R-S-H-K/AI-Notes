@@ -3,18 +3,14 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
-interface NotePageProps {
-  params: {
-    id: string;
-  };
-}
+type Params = Promise<{ id: string }>
 
 export const metadata: Metadata = {
   title: 'Edit Note | AI Notes',
   description: 'Edit your note with AI-powered features',
 };
 
-export default async function NotePage({ params }: NotePageProps) {
+export default async function NotePage({ params }: { params: Params }) {
   const supabase = await createClient();
   const { data: { session } } = await supabase.auth.getSession();
 
@@ -22,9 +18,11 @@ export default async function NotePage({ params }: NotePageProps) {
     redirect('/auth/login');
   }
 
+  const { id } = await params
+
   return (
     <div className="container py-8">
-      <NoteEditor noteId={params.id} />
+      <NoteEditor noteId={id} />
     </div>
   );
 }
