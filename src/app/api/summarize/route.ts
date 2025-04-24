@@ -17,9 +17,9 @@ export async function POST(request: NextRequest) {
     // Parse request body
     const { content } = await request.json();
 
-    if (!content || typeof content !== 'string' || content.length == 100) {
+    if (!content || typeof content !== 'string' || content.length == 0) {
       return NextResponse.json(
-        { error: 'Content must be a string with at least 100 characters' },
+        { error: 'Content must be a string with with some characters' },
         { status: 400 }
       );
     }   
