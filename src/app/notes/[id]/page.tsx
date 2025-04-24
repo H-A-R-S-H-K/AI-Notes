@@ -22,11 +22,9 @@ export default async function NotePage({ params }: NotePageProps) {
     redirect('/auth/login');
   }
 
-  const { id } = await params
-  
   return (
     <div className="container py-8">
-      <NoteEditor noteId={id} />
+      <NoteEditor noteId={params.id} />
     </div>
   );
 }
